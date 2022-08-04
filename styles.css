@@ -104,10 +104,10 @@ header span {
   height: 100px;
 }
 
-.cell.x {
+.cell.X {
   color: var(--x-color);
 }
 
-.cell.o {
+.cell.O {
   color: var(--o-color);
 }
