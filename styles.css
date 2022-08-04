@@ -1,55 +1,113 @@
+:root {
+  --x-color: #FFC329;
+  --o-color: #2BD67C;
+  --button-gradient: linear-gradient(90deg, #F96C2D, #FFC329);
+  --background: #222222;
+  --cell-background: #313131;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background);
+  color: white;
+  display: flex;
+  justify-content: center; /* change later */
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Archivo', sans-serif;
+}
+
+header {
+  font-size: 3rem;
+  line-height: 2.5rem;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header span {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.logo-tic span {
+  color: var(--x-color);
+}
+
+.logo-tac span {
+  width: 2rem;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+  background: var(--button-gradient);
+  border-radius: 5px;
+}
+
+.logo-toe span {
+  color: var(--o-color);
+}
+
+
+/* players */
+.players {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cell-background);
+  padding: 1rem 2rem;
+  margin: 2rem;
+  border-radius: 20px;
+  position: relative;
+}
+
+.players p {
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.slider {
+  width: 120px;
+  height: 40px;
+  position: absolute;
+  background-color: var(--background);
+  z-index: 1;
+  border-radius: 20px;
+  left: 4%;
+}
+
+
 /* gameboard */
 .gameboard { /* change later */
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: 300px;
-  height: 300px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .cell { /* check later */
-  border: 1px solid black;
-  background-color: #fff;
+  margin: 5px;
+  background-color: var(--cell-background);
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  font-size: 4rem;
+  width: 100px;
+  height: 100px;
 }
 
-
-/* player X */
-.cell.x::before,
-.cell.x::after {
-  content: '';
-  width: 10px;
-  height: 60px;
-  position: absolute;
-  background-color: black;
+.cell.x {
+  color: var(--x-color);
 }
 
-.cell.x::before {
-  transform: rotate(-45deg);
-}
-
-.cell.x::after {
-  transform: rotate(45deg);
-}
-
-
-/* player O */
-.cell.o::before {
-  content: '';
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  background-color: black;
-  border-radius: 50%;
-}
-
-.cell.o::after {
-  content: '';
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
+.cell.o {
+  color: var(--o-color);
 }

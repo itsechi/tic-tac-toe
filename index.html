@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&display=swap" rel="stylesheet">
+
   <script src="script.js" defer></script>
+  <script src="https://kit.fontawesome.com/5b5f5516d4.js" crossorigin="anonymous"></script>
   <title>Tic Tac Toe</title>
 </head>
+
 <body>
   <header>
-    <div class="logo-tic">TIC</div>
-    <div class="logo-tac">TAC</div>
-    <div class="logo-toe">TOE</div>
+    <div class="logo-tic">TIC<span>X</span></div>
+    <div class="logo-tac"><span></span>TAC</div>
+    <div class="logo-toe">TOE<span>O</span></div>
     </div>
   </header>
+
   <main>
     <section class="players">
+      <div class="slider"></div>
       <p class="player-X">Player X</p>
       <p class="player-O">Player O</p>
     </section>
@@ -25,4 +35,5 @@
     </section>
   </main>
 </body>
+
 </html>

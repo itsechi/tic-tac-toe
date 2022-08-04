@@ -15,6 +15,7 @@ const Gameboard = (() => {
     const markCell = e.target;
     console.log(markCell);
     markCell.classList.add('x');
+    markCell.textContent = "X"
   })
 })();
 
