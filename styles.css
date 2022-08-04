@@ -1,0 +1,55 @@
+/* gameboard */
+.gameboard { /* change later */
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 300px;
+  height: 300px;
+}
+
+.cell { /* check later */
+  border: 1px solid black;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* player X */
+.cell.x::before,
+.cell.x::after {
+  content: '';
+  width: 10px;
+  height: 60px;
+  position: absolute;
+  background-color: black;
+}
+
+.cell.x::before {
+  transform: rotate(-45deg);
+}
+
+.cell.x::after {
+  transform: rotate(45deg);
+}
+
+
+/* player O */
+.cell.o::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.cell.o::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+}
