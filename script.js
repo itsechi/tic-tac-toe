@@ -1,15 +1,15 @@
-const gameboardContainer = document.getElementById("gameboard");
+'use strict';
+const gameboardContainer = document.getElementById('gameboard');
 
-
-  // create the gameboard
+// create the gameboard
 const Gameboard = (() => {
   const gameboardArr = [];
 
   (() => {
     for (let i = 1; i <= 9; i++) {
-      const cell = document.createElement("div");
-      cell.setAttribute("class", "cell");
-      cell.setAttribute("data-cell", `${i}`);
+      const cell = document.createElement('div');
+      cell.setAttribute('class', 'cell');
+      cell.setAttribute('data-cell', `${i}`);
       gameboardContainer.appendChild(cell);
       gameboardArr.push(cell);
     }
@@ -18,10 +18,8 @@ const Gameboard = (() => {
   return { gameboardArr };
 })();
 
-
-// player factory 
-const Player = (sign) => {
-  
+// player factory
+const Player = sign => {
   const playerSign = sign;
   let activePlayer = false;
   function mark(element) {
@@ -31,39 +29,67 @@ const Player = (sign) => {
   return { activePlayer, mark };
 };
 
-
-
 const Game = (() => {
   // create players
-  const playerX = Player("X");
-  const playerO = Player("O");
-  
+  const playerX = Player('X');
+  const playerO = Player('O');
+
   // function to switch turns
   function switchTurns(player) {
     player.activePlayer = !player.activePlayer;
   }
   switchTurns(playerX);
 
+  // make the slider move and change colors
+  function changeActiveSlider() {
+    const slider = document.querySelector('.slider');
+    const playerXActiveSlider = document.querySelector('.player-X');
+    const playerOActiveSlider = document.querySelector('.player-O');
+    
+    slider.classList.toggle('O');
+    playerXActiveSlider.classList.toggle('active');
+    playerOActiveSlider.classList.toggle('active');
+  }
+
   // click the cells
-  gameboardContainer.addEventListener("click", (e) => {
+  gameboardContainer.addEventListener('click', e => {
     // mark only if a cell is empty
-    if (e.target.classList.contains("X") || e.target.classList.contains("O")) {
+    if (e.target.classList.contains('X') || e.target.classList.contains('O')) {
       return;
     }
 
     // mark cell
-    if (e.target.classList.contains("cell")) {
+    if (e.target.classList.contains('cell')) {
       const markCell = e.target;
       if (playerX.activePlayer) {
         playerX.mark(markCell);
         switchTurns(playerX);
         switchTurns(playerO);
+        changeActiveSlider();
+
       } else if (playerO.activePlayer) {
         playerO.mark(markCell);
         switchTurns(playerO);
         switchTurns(playerX);
+        changeActiveSlider();
       }
       console.log(markCell);
     }
   });
 })();
+
+
+
+
+
+
+// slider.classList.add('O');
+// playerXActiveSlider.classList.remove('active');
+// playerOActiveSlider.classList.add('active');
+
+
+// slider.classList.remove('O');
+// playerXActiveSlider.classList.add('active');
+// playerOActiveSlider.classList.remove('active');
+
+

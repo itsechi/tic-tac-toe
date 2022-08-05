@@ -56,6 +56,13 @@ header span {
   color: var(--o-color);
 }
 
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 /* players */
 .players {
@@ -67,21 +74,34 @@ header span {
   margin: 2rem;
   border-radius: 20px;
   position: relative;
+  min-width: 300px;
 }
 
 .players p {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 800;
   z-index: 2;
+  color: white;
 }
 
 .slider {
-  width: 120px;
-  height: 40px;
+  width: 145px;
+  height: 70%;
   position: absolute;
-  background-color: var(--background);
   z-index: 1;
   border-radius: 20px;
-  left: 4%;
+  transition: left 0.3s ease;
+  left: 2%;
+  background-color: var(--x-color);
+}
+
+.slider.O {
+  left: 49%;
+  background-color: var(--o-color);
+}
+
+.player-X.active, .player-O.active {
+  color: var(--background);
 }
 
 
@@ -111,3 +131,4 @@ header span {
 .cell.O {
   color: var(--o-color);
 }
+ 
