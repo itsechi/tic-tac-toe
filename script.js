@@ -100,6 +100,12 @@ const Game = (() => {
       endGameModal.classList.toggle('hidden');
       endGameMessage.textContent = `Player ${sign} has won!`;
     }
+    const draw = Gameboard.gameboardArr.every(cell => cell.textContent != '');
+    if (draw && !won) {
+      overlay.classList.toggle('hidden');
+      endGameModal.classList.toggle('hidden');
+      endGameMessage.textContent = `It's a tie!`;
+    }
   }
 
   endGameBtn.addEventListener('click', restartGame);
@@ -108,7 +114,7 @@ const Game = (() => {
       cell.classList.remove('X');
       cell.classList.remove('O');
       cell.textContent = '';
-    });
+    }); 
     overlay.classList.toggle('hidden');
     endGameModal.classList.toggle('hidden');
     slider.classList.remove('O');
