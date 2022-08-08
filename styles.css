@@ -20,6 +20,9 @@ body {
   color: white;
   font-family: 'Archivo', sans-serif;
   user-select: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .flex {
@@ -35,6 +38,7 @@ header {
   font-size: 3rem;
   line-height: 2.5rem;
   z-index: 4;
+  margin-top: 3rem;
 }
 
 header div {
