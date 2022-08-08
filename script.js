@@ -36,9 +36,9 @@ const Game = (() => {
   const endGameModal = document.getElementById('endGameModal');
   const endGameMessage = document.getElementById('endGameMessage');
   const endGameBtn = document.getElementById('endGameBtn');
-  const slider = document.querySelector('.slider');
-  const playerXActiveSlider = document.querySelector('.player-X');
-  const playerOActiveSlider = document.querySelector('.player-O');
+  const slider = document.getElementById('slider');
+  const playerXActiveSlider = document.getElementById('playerX');
+  const playerOActiveSlider = document.getElementById('playerO');
   const vsPlayerBtn = document.getElementById('vsPlayer');
   const vsComputerBtn = document.getElementById('vsComputer');
   const startGameModal = document.getElementById('startGameModal');
@@ -116,7 +116,6 @@ const Game = (() => {
             emptyCells.push(cell);
           }
         });
-        console.log(emptyCells);
         const randomCell = Math.floor(Math.random() * emptyCells.length);
         const markCellBot = emptyCells[randomCell];
         playerO.mark(markCellBot);

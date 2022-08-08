@@ -16,7 +16,7 @@
   <title>Tic Tac Toe</title>
 </head>
 
-<body>
+<body class="flex">
   <header>
     <div class="logo-tic">TIC<span>X</span></div>
     <div class="logo-tac"><span></span>TAC</div>
@@ -24,16 +24,16 @@
     </div>
   </header>
 
-  <main>
-<div class="start-game" id="startGameModal">
-  <button id="vsPlayer">Player VS Player</button>
-  <button id="vsComputer">Player VS Computer</button>
-</div>
+  <main class="flex">
+    <div class="start-game flex" id="startGameModal">
+      <button id="vsPlayer">Player VS Player</button>
+      <button id="vsComputer">Player VS Computer</button>
+    </div>
 
     <section class="players">
-      <div class="slider"></div>
-      <p class="player-X active">Player X</p>
-      <p class="player-O">Player O</p>
+      <div class="slider" id="slider"></div>
+      <p class="player-X active" id="playerX">Player X</p>
+      <p class="player-O" id="playerO">Player O</p>
     </section>
 
     <section class="gameboard" id="gameboard">
@@ -41,12 +41,12 @@
     <p id="returnBtn" class="return">&larr;</p>
 
     <div class="overlay hidden" id="overlay"></div>
-    <section class="end-game hidden" id="endGameModal">
+    <section class="end-game flex hidden" id="endGameModal">
       <p id="endGameMessage">Player X won!</p>
       <button id="endGameBtn">Play again</button>
     </section>
-    
-  </main>
-</body> 
 
-</html> 
+  </main>
+</body>
+
+</html>

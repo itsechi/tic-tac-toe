@@ -18,14 +18,19 @@ body {
   width: 100vw;
   background-color: var(--background);
   color: white;
-  display: flex;
-  justify-content: center;
-  /* change later */
-  align-items: center;
-  flex-direction: column;
   font-family: 'Archivo', sans-serif;
+  user-select: none;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+/* header */
 header {
   font-size: 3rem;
   line-height: 2.5rem;
@@ -60,13 +65,6 @@ header span {
   color: var(--o-color);
 }
 
-main {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
 /* players */
 .players {
@@ -92,10 +90,10 @@ main {
   width: 145px;
   height: 70%;
   position: absolute;
+  left: 3%;
   z-index: 1;
   border-radius: 20px;
   transition: left 0.3s ease;
-  left: 3%;
   background-color: var(--x-color);
 }
 
@@ -115,14 +113,16 @@ main {
 }
 
 /* gameboard */
+main {
+  width: 100%;
+}
+
 .gameboard {
-  /* change later */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .cell {
-  /* check later */
   margin: 5px;
   background-color: var(--cell-background);
   position: relative;
@@ -152,10 +152,6 @@ main {
   height: 15rem;
   z-index: 5;
   padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   border-radius: 25px;
   text-align: center;
 }
@@ -178,12 +174,10 @@ button {
   font-weight: 800;
 }
 
-
 button:hover {
   box-shadow: 0 0 1em .1em #F96C2D;
   background: var(--button-gradient-hover)
 }
-
 
 .overlay {
   position: absolute;
@@ -206,10 +200,6 @@ button:hover {
   top: 0;
   left: 0;
   z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .start-game button {
