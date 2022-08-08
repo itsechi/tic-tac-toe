@@ -42,20 +42,28 @@ const Game = (() => {
   const vsPlayerBtn = document.getElementById('vsPlayer');
   const vsComputerBtn = document.getElementById('vsComputer');
   const startGameModal = document.getElementById('startGameModal');
+  const returnBtn = document.getElementById('returnBtn');
   let gamemode;
   let won;
 
+  // pick your opponent
   vsPlayerBtn.addEventListener('click', () => {
     startGame('player');
   });
-
   vsComputerBtn.addEventListener('click', () => {
     startGame('bot');
   });
-
   function startGame(name) {
     startGameModal.classList.add('hidden');
     gamemode = name;
+  }
+
+  // return to the start screen
+  returnBtn.addEventListener('click', goBack);
+  function goBack() {
+    startGameModal.classList.remove('hidden');
+    gamemode = '';
+    restartGame();
   }
 
   // function to switch turns
@@ -150,15 +158,17 @@ const Game = (() => {
     return { won };
   }
 
+  // restart the game
   endGameBtn.addEventListener('click', restartGame);
   function restartGame() {
+    won = '';
     Gameboard.gameboardArr.forEach(cell => {
       cell.classList.remove('X');
       cell.classList.remove('O');
       cell.textContent = '';
     });
-    overlay.classList.toggle('hidden');
-    endGameModal.classList.toggle('hidden');
+    overlay.classList.add('hidden');
+    endGameModal.classList.add('hidden');
     slider.classList.remove('O');
     playerXActiveSlider.classList.add('active');
     playerOActiveSlider.classList.remove('active');
