@@ -39,6 +39,24 @@ const Game = (() => {
   const slider = document.querySelector('.slider');
   const playerXActiveSlider = document.querySelector('.player-X');
   const playerOActiveSlider = document.querySelector('.player-O');
+  const vsPlayerBtn = document.getElementById('vsPlayer');
+  const vsComputerBtn = document.getElementById('vsComputer');
+  const startGameModal = document.getElementById('startGameModal');
+  let gamemode;
+  let won;
+
+  vsPlayerBtn.addEventListener('click', () => {
+    startGame('player');
+  });
+
+  vsComputerBtn.addEventListener('click', () => {
+    startGame('bot');
+  });
+
+  function startGame(name) {
+    startGameModal.classList.add('hidden');
+    gamemode = name;
+  }
 
   // function to switch turns
   function switchTurns(player) {
@@ -63,14 +81,37 @@ const Game = (() => {
     // mark cell
     if (e.target.classList.contains('cell')) {
       const markCell = e.target;
+
       if (playerX.activePlayer) {
         playerX.mark(markCell);
         switchTurns(playerX);
         switchTurns(playerO);
         changeActiveSlider();
         checkWin('X');
+        if (gamemode === 'bot' && !won) {
+          setTimeout(botPlay, 300);
+        }
       } else if (playerO.activePlayer) {
         playerO.mark(markCell);
+        switchTurns(playerO);
+        switchTurns(playerX);
+        changeActiveSlider();
+        checkWin('O');
+      }
+
+      // bot function
+      function botPlay() {
+        const cells = gameboardContainer.querySelectorAll('.cell');
+        let emptyCells = [];
+        cells.forEach(cell => {
+          if (!cell.classList.contains('X') && !cell.classList.contains('O')) {
+            emptyCells.push(cell);
+          }
+        });
+        console.log(emptyCells);
+        const randomCell = Math.floor(Math.random() * emptyCells.length);
+        const markCellBot = emptyCells[randomCell];
+        playerO.mark(markCellBot);
         switchTurns(playerO);
         switchTurns(playerX);
         changeActiveSlider();
@@ -90,7 +131,7 @@ const Game = (() => {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    const won = winningCombinations.some(combination => {
+    won = winningCombinations.some(combination => {
       return combination.every(i => {
         return Gameboard.gameboardArr[i].classList.contains(sign);
       });
@@ -106,6 +147,7 @@ const Game = (() => {
       endGameModal.classList.toggle('hidden');
       endGameMessage.textContent = `It's a tie!`;
     }
+    return { won };
   }
 
   endGameBtn.addEventListener('click', restartGame);
@@ -114,7 +156,7 @@ const Game = (() => {
       cell.classList.remove('X');
       cell.classList.remove('O');
       cell.textContent = '';
-    }); 
+    });
     overlay.classList.toggle('hidden');
     endGameModal.classList.toggle('hidden');
     slider.classList.remove('O');
